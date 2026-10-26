@@ -75,7 +75,7 @@ $env:TEST_DATABASE_URL = 'postgres://user:password@localhost:5432/test_database'
 npm run test:postgres
 ```
 
-GitHub Actions에서는 PostgreSQL 서비스와 서로 다른 두 연결 풀을 이용해 1,000개의 동시 점유 요청 중 1개만 성공, 100회 동시 결제 재전송, 트랜잭션 롤백 및 연결 재생성 후 보존을 확인한 후 Pages를 배포합니다. 이는 두 OS 서버 프로세스의 장애/재시작 부하 시험을 대체하지 않습니다.
+GitHub Actions에서는 PostgreSQL 서비스와 서로 다른 두 연결 풀을 이용해 1,000개의 동시 점유 요청 중 1개만 성공, 100회 동시 결제 재전송, 트랜잭션 롤백 및 연결 재생성 후 보존을 확인한 후 Pages를 배포합니다. 별도 HTTP 통합 테스트는 두 API 프로세스에서 인증·중복 대기·동시 점유·응답 유실과 재시작 후 결제 복구를 검증합니다. 실제 1만 명 부하, OS 강제 종료, DB 프로세스 장애 시험은 개인 PC 배포 후 별도로 수행해야 합니다.
 
 화면 자동화는 `data-testid`를 사용하세요:
 
